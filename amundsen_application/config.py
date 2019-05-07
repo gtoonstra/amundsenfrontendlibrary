@@ -26,7 +26,7 @@ class LocalConfig(Config):
     METADATA_PORT = '5002'
 
     # If installing using the Docker bootstrap, this should be modified to the docker host ip.
-    LOCAL_HOST = '0.0.0.0'
+    LOCAL_HOST = '127.0.0.1'
 
     SEARCHSERVICE_REQUEST_CLIENT = None
     SEARCHSERVICE_REQUEST_HEADERS = None

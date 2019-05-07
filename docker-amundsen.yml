@@ -23,41 +23,6 @@ services:
           - 9200:9200
       networks:
         - amundsennet
-  amundsensearch:
-      image: amundsendev/amundsen-search:1.0.2
-      container_name: amundsensearch
-      ports:
-        - 5001:5000
-      depends_on:
-        - elasticsearch
-      networks:
-        - amundsennet
-      environment:
-        - PROXY_ENDPOINT=es_amundsen
-  amundsenmetadata:
-      image: amundsendev/amundsen-metadata:1.0.7
-      container_name: amundsenmetadata
-      depends_on:
-        - neo4j
-      ports:
-        - 5002:5000
-      networks:
-        - amundsennet
-      environment:
-         - PROXY_HOST=bolt://neo4j_amundsen
-  amundsenfrontend:
-      image: amundsendev/amundsen-frontend:1.0.5
-      container_name: amundsenfrontend
-      depends_on:
-        - amundsenmetadata
-        - amundsensearch
-      ports:
-        - 5000:5000
-      networks:
-        - amundsennet
-      environment:
-        - SEARCHSERVICE_BASE=http://amundsensearch:5000
-        - METADATASERVICE_BASE=http://amundsenmetadata:5000
 
 networks:
   amundsennet:
